@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Pedestrian Crossing - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4F46E5;
+            --primary-blue-light: #6366F1;
+            --primary-blue-dark: #3730A3;
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .login-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Left Side - Illustration */
+        .left-side {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.9) 0%, rgba(99, 102, 241, 0.8) 50%, rgba(139, 92, 246, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .illustration-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .crossing-illustration {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            30% { transform: translateY(-30px); }
+        }
+
+        .project-title {
+            color: var(--white);
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .project-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Right Side - Login Form */
+        .right-side {
+            flex: 1;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .login-form-container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .marktel-logo {
+            width: 130px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .welcome-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            background: var(--white);
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .form-input::placeholder {
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .form-input:hover {
+            border-color: var(--gray-300);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+            box-shadow: var(--shadow-md);
+            letter-spacing: 0.01em;
+        }
+
+        .login-button:hover {
+            background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+            box-shadow: var(--shadow);
+        }
+
+        /* .forgot-password {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            margin-top: -0.2rem;
+            cursor: pointer;
+        } */
+
+        /* .forgot-password:hover {
+            color: var(--primary-blue);
+        } */
+
+        .bottom-logo-container {
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            z-index: 999;
+            width: 540px;
+            height: auto;
+        }
+
+        .main-logo {
+            width: 150px;
+            height: 100px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .main-logo:hover {
+            transform: scale(1.2);
+        }
+
+        /* Enhanced Error Message with Close Button */
+        .error-message {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: var(--shadow-sm);
+            animation: slideInDown 0.3s ease-out;
+        }
+
+        .error-message.hide {
+            animation: slideOutUp 0.3s ease-in forwards;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideOutUp {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        .error-icon {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            background: #dc2626;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .error-icon svg {
+            width: 10px;
+            height: 10px;
+            fill: white;
+        }
+
+        .error-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .error-close {
+            flex-shrink: 0;
+            background: none;
+            border: none;
+            color: #dc2626;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .error-close:hover {
+            background: rgba(220, 38, 38, 0.1);
+            color: #b91c1c;
+            transform: scale(1.1);
+        }
+
+        .error-close:active {
+            transform: scale(0.95);
+        }
+
+        /* Auto-hide notification */
+        .error-message.auto-hide {
+            animation: slideOutUp 0.3s ease-in 4.7s forwards;
+        }
+
+        /* Forgot Password Modal Styles */
+        /* .forgot-password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .forgot-password-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .forgot-password-modal {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 450px;
+            margin: 1rem;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--gray-200);
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s ease;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .forgot-password-overlay.show .forgot-password-modal {
+            transform: scale(1) translateY(0);
+        } */
+
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-400);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .modal-close-btn:hover {
+            background: var(--gray-100);
+            color: var(--gray-600);
+        }
+
+        /* .forgot-password-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .forgot-password-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow-md);
+        } */
+
+        /* .forgot-password-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .forgot-password-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .forgot-password-subtitle {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .forgot-password-form {
+            margin-bottom: 1.5rem;
+        }
+
+        .forgot-password-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            background: var(--white);
+            transition: all 0.2s ease;
+            outline: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .forgot-password-input::placeholder {
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .forgot-password-input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .forgot-password-input:hover {
+            border-color: var(--gray-300);
+        }
+
+        .forgot-password-submit {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            letter-spacing: 0.01em;
+            position: relative;
+        }
+
+        .forgot-password-submit:hover {
+            background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .forgot-password-submit:active {
+            transform: translateY(0);
+            box-shadow: var(--shadow);
+        }
+
+        .forgot-password-submit.loading {
+            color: transparent;
+        }
+
+        .forgot-password-submit.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        } */
+
+        .back-to-login {
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        .back-to-login a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .back-to-login a:hover {
+            color: var(--primary-blue-dark);
+            text-decoration: underline;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .success-message.show {
+            display: flex;
+        }
+
+        .success-message svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Error Message for Modal */
+        .modal-error-message {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: none;
+        }
+
+        .modal-error-message.show {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .login-container {
+                flex-direction: column;
+            }
+            .left-side {
+                flex: none;
+                height: 40vh;
+                padding: 2rem;
+            }
+            .project-title {
+                font-size: 2rem;
+            }
+            .project-subtitle {
+                font-size: 1rem;
+            }
+            .crossing-illustration {
+                max-width: 250px;
+                margin-bottom: 1rem;
+            }
+            .right-side {
+                flex: none;
+                height: 60vh;
+                padding: 2rem;
+            }
+            .bottom-logo-container {
+                position: static;
+                margin-top: 2rem;
+                width: auto;
+            }
+            .main-logo {
+                width: 120px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .left-side {
+                height: 35vh;
+                padding: 1.5rem;
+            }
+            .right-side {
+                height: 65vh;
+                padding: 1.5rem;
+            }
+            .project-title {
+                font-size: 1.5rem;
+            }
+            .welcome-text {
+                font-size: 1.5rem;
+            }
+            .marktel-logo {
+                width: 100px;
+                margin-bottom: 2rem;
+            }
+            .main-logo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left-side, .right-side {
+                padding: 1rem;
+            }
+            .project-title {
+                font-size: 1.5rem;
+            }
+            .welcome-text {
+                font-size: 1.25rem;
+            }
+            .login-form-container {
+                max-width: 100%;
+            }
+            /* .forgot-password-modal {
+                padding: 2rem 1.5rem;
+                margin: 0.5rem;
+            }
+            .forgot-password-title {
+                font-size: 1.25rem;
+            } */
+            .error-message {
+                padding: 0.625rem 0.875rem;
+                font-size: 0.8125rem;
+            }
+            .error-close {
+                width: 20px;
+                height: 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* Loading Animation */
+        .login-button.loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .login-button.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Focus styles for accessibility */
+        .form-input:focus-visible,
+        .login-button:focus-visible,
+        /* .forgot-password:focus-visible,
+        .forgot-password-input:focus-visible,
+        .forgot-password-submit:focus-visible, */
+        .modal-close-btn:focus-visible,
+        .error-close:focus-visible {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Side - Illustration -->
+        <div class="left-side">
+            <div class="illustration-container">
+                <img src="{{ url_for('static', filename='assets/bg_login.png') }}"
+                      alt="Pedestrian Crossing Illustration"
+                      class="crossing-illustration">
+                <h1 class="project-title">Smart Pedestrian Crossing</h1>
+                <p class="project-subtitle">Intelligent Traffic Management System</p>
+            </div>
+        </div>
+
+        <!-- Right Side - Login Form -->
+        <div class="right-side">
+            <div class="login-form-container">
+                <img src="{{ url_for('static', filename='assets/logo_marktel.png') }}"
+                      alt="Marktel Logo"
+                      class="marktel-logo">
+                                
+                <h2 class="welcome-text">Welcome Back !</h2>
+
+                <!-- Enhanced Error Message with Close Button -->
+                {% if error %}
+                    <div class="error-message auto-hide" id="errorMessage">
+                        <div class="error-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </div>
+                        <div class="error-text">{{ error }}</div>
+                        <button class="error-close" onclick="closeErrorMessage()" aria-label="Close error message">
+                            ×
+                        </button>
+                    </div>
+                {% endif %}
+
+                <!-- Dynamic Error Message (for JavaScript errors) -->
+                <div class="error-message" id="dynamicErrorMessage" style="display: none;">
+                    <div class="error-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </div>
+                    <div class="error-text" id="dynamicErrorText"></div>
+                    <button class="error-close" onclick="closeDynamicErrorMessage()" aria-label="Close error message">
+                        ×
+                    </button>
+                </div>
+
+                <form method="POST" action="/login" id="loginForm">
+                    <div class="form-group">
+                        <input type="text"
+                                id="username"
+                                name="username"
+                                class="form-input"
+                                placeholder="Username"
+                               required
+                               autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password"
+                                id="password"
+                                name="password"
+                                class="form-input"
+                                placeholder="Password"
+                               required
+                               autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="login-button" id="loginBtn">
+                        Login
+                    </button>
+                </form>
+                <!-- <a href="#" class="forgot-password" onclick="showForgotPasswordModal(event)">Forgot Password?</a> -->
+            </div>
+
+            <div class="bottom-logo-container">
+                <img src="{{ url_for('static', filename='assets/logo_utama.png') }}"
+                      alt="Smart Pedestrian Crossing Logo"
+                      class="main-logo">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Error Message Management
+        function closeErrorMessage() {
+            const errorMessage = document.getElementById('errorMessage');
+            if (errorMessage) {
+                errorMessage.classList.add('hide');
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        function closeDynamicErrorMessage() {
+            const dynamicErrorMessage = document.getElementById('dynamicErrorMessage');
+            if (dynamicErrorMessage) {
+                dynamicErrorMessage.classList.add('hide');
+                setTimeout(() => {
+                    dynamicErrorMessage.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        function showErrorNotification(message) {
+            const dynamicErrorMessage = document.getElementById('dynamicErrorMessage');
+            const dynamicErrorText = document.getElementById('dynamicErrorText');
+            
+            if (dynamicErrorMessage && dynamicErrorText) {
+                dynamicErrorText.textContent = message;
+                dynamicErrorMessage.style.display = 'flex';
+                dynamicErrorMessage.classList.remove('hide', 'auto-hide');
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    dynamicErrorMessage.classList.add('auto-hide');
+                }, 100);
+            }
+        }
+
+        // Clear error messages on page refresh/load
+        function checkForErrors() {
+            // Clear URL parameters that might contain error information
+            const url = new URL(window.location);
+            if (url.searchParams.has('error')) {
+                url.searchParams.delete('error');
+                window.history.replaceState({}, document.title, url.pathname);
+            }
+            
+            // Clear any stored error messages
+            if (sessionStorage.getItem('loginError')) {
+                sessionStorage.removeItem('loginError');
+            }
+            
+            if (localStorage.getItem('loginError')) {
+                localStorage.removeItem('loginError');
+            }
+        }
+
+        // Enhanced form handling with loading state
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const loginBtn = document.getElementById('loginBtn');
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // Basic validation
+            if (!username || !password) {
+                e.preventDefault();
+                showErrorNotification('Please fill in all fields');
+                return;
+            }
+
+            // Add loading state
+            loginBtn.classList.add('loading');
+            loginBtn.disabled = true;
+
+            // For demo purposes - remove this in production
+            setTimeout(() => {
+                loginBtn.classList.remove('loading');
+                loginBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Enhanced input interactions
+        const inputs = document.querySelectorAll('.form-input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Keyboard navigation enhancement
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.target.classList.contains('form-input')) {
+                const inputs = Array.from(document.querySelectorAll('.form-input'));
+                const currentIndex = inputs.indexOf(e.target);
+                
+                if (currentIndex < inputs.length - 1) {
+                    e.preventDefault();
+                    inputs[currentIndex + 1].focus();
+                }
+            }
+
+            // Close error message with Escape key
+            if (e.key === 'Escape') {
+                const errorMessage = document.getElementById('errorMessage');
+                const dynamicErrorMessage = document.getElementById('dynamicErrorMessage');
+                
+                if (errorMessage && errorMessage.style.display !== 'none') {
+                    closeErrorMessage();
+                }
+                
+                if (dynamicErrorMessage && dynamicErrorMessage.style.display !== 'none') {
+                    closeDynamicErrorMessage();
+                }
+            }
+        });
+
+        // Add subtle animations on load
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.marktel-logo, .welcome-text, .form-group, .login-button, .forgot-password');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+        </script>
+    </body>
+</html>

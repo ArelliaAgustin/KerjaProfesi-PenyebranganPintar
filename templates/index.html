@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Lokasi-Pemantauan{% endblock %}
+
+{% block content %}
+    </main>
+        <div class="grid-container">
+      <!-- Card -->
+        <div class="card">
+          <h3>Metro Indah Mall</h3>
+          <img src="{{ url_for('static', filename='assets/mim.png') }}" alt="Metro Indah Mall" />
+          <a href="{{ url_for('dashboardcam1') }}" class="btn">Dasbor Pemantauan</a>
+        </div>
+        <div class="card">
+          <h3>Braga</h3>
+          <img src="{{ url_for('static', filename='assets/mim.png') }}" alt="Braga" />
+          <a href="{{ url_for('dashboardcam3') }}" class="btn">Dasbor Pemantauan</a>
+        </div>
+        <div class="card">
+          <h3>Metro Indah Mall</h3>
+          <img src="{{ url_for('static', filename='assets/mim.png') }}" alt="Metro Indah Mall" />
+          <a href="{{ url_for('dashboardcam1') }}" class="btn">Dasbor Pemantauan</a>
+        </div>
+    </div>
+  </main>
+{% endblock %}

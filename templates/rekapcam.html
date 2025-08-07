@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Kamera</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #f5f6fa; }
+    .container { padding: 30px; }
+    .tabs button, .cams button {
+      margin: 5px;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .chart-container {
+      margin-top: 20px;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .chart-flex {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .chart-flex > div {
+      flex: 1;
+      min-width: 300px;
+    }
+    .table-container {
+      background: white;
+      border-radius: 10px;
+      margin-top: 20px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { padding: 10px; text-align: center; border-bottom: 1px solid #ddd; }
+    th { background: linear-gradient(to right, #6a11cb, #2575fc); color: white; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dashboard Kamera</h1>
+    <div class="cams">
+      <button onclick="setKamera('CAM1')">CAM 1</button>
+      <button onclick="setKamera('CAM2')">CAM 2</button>
+    </div>
+    <div class="tabs">
+      <button onclick="setMode('harian')">Harian</button>
+      <button onclick="setMode('mingguan')">Mingguan</button>
+      <button onclick="setMode('bulanan')">Bulanan</button>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-flex">
+        <div><canvas id="chart1"></canvas></div>
+        <div><canvas id="chart2"></canvas></div>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <h3 id="tabel-title">Tabel</h3>
+      <table id="data-table">
+        <thead><tr id="table-head"></tr></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

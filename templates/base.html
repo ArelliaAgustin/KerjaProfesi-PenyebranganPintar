@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Judul Default{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/logo_utama.png') }}">
+    <!-- Link ke CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="header-left">
+            <div class="logo-small">
+                <img id="logo-small" src="{{ url_for('static', filename='assets/logo_utama_fix.png') }}" alt="Smart Pedestrian Crossing Logo">
+            </div>
+            <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit; font-size: 1.0rem; font-weight: 700;">Penyebrangan Pintar</a>
+        </div>
+        <div class="header-time-display">
+            <div class="time" id="currentTime">08:39:00</div>
+            <div class="date" id="currentDate">04 Agustus 2025</div>
+        </div>
+        <div class="header-right">
+            <button class="info-btn" onclick="showSystemInfo()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4"/>
+                    <path d="M12 8h.01"/>
+                </svg>
+            </button>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <svg class="sun-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <div class="user-info">
+                <span>Admin</span>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+    
+    <!-- Konten Halaman -->
+        {% block content %}{% endblock %}
+   <!-- Link ke JS -->
+    <script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+    <footer style="background: var(--surface-color); border-top: 1px solid var(--border-light); padding: 1rem 2rem; color: var(--text-muted); margin-top: 2rem;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <img src="{{ url_for('static', filename='assets/logo_utama.png') }}" alt="Logo" style="width: 60px; height: 40px; border-radius: 8px;">
+        <div style="text-align: left;">
+          <div><small>&copy; 2025 Smart Pedestrian Crossing. Semua Hak Dilindungi.</small></div>
+          <div><small>Dikembangkan oleh PT. MarkTel X Tim Informatika Universitas Pembangunan Jaya</small></div>
+        </div>
+      </div>
+    </footer>
+</html>

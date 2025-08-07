@@ -57,13 +57,6 @@ Proyek **Smart Pedestrian Crossing** bertujuan meningkatkan keselamatan pejalan 
 
 ---
 
-## 👥 Kontributor
-
-- **Indah Hairunisah** - Pengembang utama dan dokumentasi
-- 
-
----
-
 ## 📄 Lisensi
 
-Proyek ini dibuat untuk tujuan pembelajaran dan riset dalam proyek bersama PT. MarkTel
+Proyek ini dibuat untuk tujuan pembelajaran dan riset dalam proyek Magang Kerja Profesi bersama PT. MarkTel
